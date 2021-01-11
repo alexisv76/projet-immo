@@ -27,11 +27,6 @@ from flask_login import UserMixin
 #         liste += [lignepropre]
 
 #aprés lecture de ce fichier une connexion est initialisé
-# db = PostgresqlExtDatabase(host='ec2-52-48-65-240.eu-west-1.compute.amazonaws.com',
-#                             database='d1nt81188b39lc',
-#                             user='lrkqkvxihsqpig',
-#                             password='e80664f7359aca14babdcc81dea263fa530f64321d7ce25e713214f786e9f193',
-#                             port=5432)
 
 db = PostgresqlExtDatabase(host='localhost',
                             database='immo',

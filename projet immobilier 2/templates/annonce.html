@@ -1,0 +1,180 @@
+{% extends "index.html" %}
+
+<body>
+
+    {% block contenue %}
+    	<header id="head" class="secondary"></header>
+
+	<!-- container -->
+	<div class="container">
+
+		<ol class="breadcrumb">
+			<li><a href="/">Accueil</a></li>
+			<li class="active">annonces</li>
+		</ol>
+
+		<div class="row">
+			
+			<!-- Article main content -->
+			<article class="col-xs-12 maincontent">
+				<header class="page-header">
+					<h1 class="page-title">{{ville}}</h1>
+				</header>
+		<div>
+        <div id="cta" name="reco" >
+          <p>Annonces recommandées</p>
+        </div>
+           <div>
+           <div id="cta2" name="maisons" >
+          <p>Maisons</p>
+        </div>
+           <div id="cta3" name="immeuble">
+          <p>immeuble</p>
+        </div>
+          <div id="cta3" name="appartements">
+          <p>appartement</p>
+        </div>
+        </div>
+        
+        <div id="r" style=display:none>
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        {% for t in top%}
+        <div class="panel panel-default">
+		<div class="panel-body">
+        <p><img src={{t.image}} alt="" class="img-rounded pull-right" width="300" > 
+        <li>{{t.types_bien.type_bien}} au prix de {{t.prix}}€ soit
+           {{t.prix_metre_carre}}€ /m2 <br/>
+          {{t.description }} </li>
+          <a href={{t.lien}}>cliquer ici pour en savoir plus</a></p>
+        </div>
+        </div>
+        {% endfor %}
+        </div>
+        </div>
+
+        
+        <div id="r2" style=display:none>
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        {% for m in maison %}
+        <div class="panel panel-default">
+		<div class="panel-body">
+        <p><img src={{m.image}} alt="" class="img-rounded pull-right" width="300" > 
+        <li>{{m.types_bien.type_bien}} au prix de {{m.prix}}€ soit
+           {{m.prix_metre_carre}}€ /m2 <br/>
+          {{m.description }} </li>
+          <a href={{m.lien}}>cliquer ici pour en savoir plus</a></p>
+        </div>
+        </div>
+        {% endfor %}
+        </div>
+        </div>
+    
+        
+        <div id="r3" style=display:none>
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        {% for i in immeuble %}
+      
+        <div class="panel panel-default">
+		<div class="panel-body">
+        <p><img src={{i.image}} alt="" class="img-rounded pull-right" width="300" > 
+        <li>{{i.types_bien.type_bien}} au prix de {{i.prix}}€ soit
+           {{i.prix_metre_carre}}€ /m2 <br/>
+          {{i.description }} </li>
+          <a href={{i.lien}}>cliquer ici pour en savoir plus</a></p>
+        </div>
+        </div>
+        {% endfor %}
+        </div>
+        </div>
+       
+        
+        <div id="r4" style=display:none>
+         <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        {% for a in appartement %}  
+        <div class="panel panel-default">
+		<div class="panel-body">
+        <p><img src={{a.image}} alt="" class="img-rounded pull-right" width="300" > 
+        <li>{{a.types_bien.type_bien}} au prix de {{a.prix}}€ soit
+           {{a.prix_metre_carre}}€ /m2 <br/>
+          {{a.description }} </li>
+          <a href={{a.lien}}>cliquer ici pour en savoir plus</a></p>
+         </div>
+        </div>
+        
+        {% endfor %}
+       
+        </div>
+        </div>
+        
+       
+    {% endblock contenue %}
+    {% block autocomplete %}
+    <script>
+     
+let togg1 = document.getElementById("cta");
+let togg2 = document.getElementById("cta2");
+let togg3 = document.getElementById("cta3");
+let togg4 = document.getElementById("cta4");
+
+
+let d1 = document.getElementById("r");
+let d2 = document.getElementById("r2");
+let d3 = document.getElementById("r3");
+let d4 = document.getElementById("r4");
+
+
+var lenmaison = {{lenmaison}}
+var lentop = {{lentop}}
+var lenimmeuble = {{lenimmeuble}}
+var lenappart = {{lenappart}}
+
+
+togg1.addEventListener("click", () => {
+  if(getComputedStyle(d1).display != "none"){
+    d1.style.display = "none";
+  } else {
+    d1.style.display = "block";
+  }
+})
+togg2.addEventListener("click", () => {
+  if(getComputedStyle(d2).display != "none"){
+    d2.style.display = "none";
+  } else {
+    d2.style.display = "block";
+  }
+})
+
+togg3.addEventListener("click", () => {
+  if(getComputedStyle(d3).display != "none"){
+    d3.style.display = "none";
+  } else {
+    d3.style.display = "block";
+  }
+})
+
+togg4.addEventListener("click", () => {
+  if(getComputedStyle(d4).display != "none"){
+    d4.style.display = "none";
+  } else {
+    d4.style.display = "block";
+  }
+})
+
+window.onload = function()
+{if(lenmaison < 1){
+    togg2.style.display = "none";
+    }
+ if(lentop < 1){
+    togg1.style.display = "none";
+    }
+  if(lenimmeuble < 1){
+    togg3.style.display = "none";
+    }
+  if(lenappart < 1){
+    togg4.style.display = "none";
+    }
+}
+</script>    
+    {% endblock autocomplete %}
+</body>
+</html>

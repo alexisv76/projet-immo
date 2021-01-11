@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "index.html" %}
+
+<body>
+{% block contenue %}
+<header id="head" class="secondary"></header>
+	<div class="container">
+
+		<ol class="breadcrumb">
+			<li><a href="/">accueil</a></li>
+			<li class="active">admin</li>
+		</ol>
+		
+		<article class="col-xs-12 maincontent">
+				<header class="page-header">
+					<h1 class="page-title">admin</h1>
+				</header>
+
+		<div class="row">
+
+							<h3 class="thin text-center">modifier base </h3>
+							<p class="text-center text-muted">???? </p>
+							<hr>
+							<div id="table" class="table-editable">
+     
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+       <thead>
+          <tr>
+            <th class="text-center">id </th>
+            <th class="text-center">nom</th>                      
+            <th class="text-center">loyer</th>
+             <th class="text-center"> loyers</th>
+            <th class="text-center">loyer</th>                      
+            <th class="text-center">loyer</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+         {% for table in tables %}
+         <tr>
+            <td class="pt-3-half" contenteditable="true">{{table[0]}}</td>
+              <td class="pt-3-half" contenteditable="true">{{table[1]}}</td>
+               <td class="pt-3-half" contenteditable="true">{{table[2]}}</td>
+           <td class="pt-3-half" contenteditable="true">{{table[3]}}</td>
+             <td class="pt-3-half" contenteditable="true">{{table[4]}}</td>
+              <td class="pt-3-half" contenteditable="true">{{table[5]}}</td>
+          </tr>
+           {% endfor %}
+      </tbody>
+     </table>
+            <script type="text/javascript">
+
+function doWork() {
+     
+     var table=document.getElementsByTagName('table')[0]
+     var notes=new Map();
+    for (let i = 1; i < document.getElementsByTagName('tr').length; i++) {
+            var id=table.getElementsByTagName('tr')[i].cells[0].innerHTML;
+            var nom=table.getElementsByTagName('tr')[i].cells[1].innerHTML;
+             var prix1=table.getElementsByTagName('tr')[i].cells[2].innerHTML;
+              var prix2=table.getElementsByTagName('tr')[i].cells[3].innerHTML;
+               var prix3=table.getElementsByTagName('tr')[i].cells[4].innerHTML
+                var prix4=table.getElementsByTagName('tr')[i].cells[5].innerHTML
+            notes[i] = [id,nom,prix1,prix2,prix3,prix4];
+            }
+    var total= [notes]
+   
+	// ajax the JSON to the server
+	$.post("jsondata", JSON.stringify(total), function(){(alert('votre demande est enregistrées  vous pouvez la valider'))
+
+	});
+	// stop link reloading the page
+ event.preventDefault();
+}
+
+</script>
+       <div>
+                <a  <button onclick="doWork()" class="btn btn-green"> enregistrer</button></a> 
+                 <button><a href="/equipes" class="btn btn-green" >vaider la demande</button></a></div>              
+                
+                     </div>
+
+{% endblock contenue %}
+

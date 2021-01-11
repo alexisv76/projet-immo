@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "index.html" %}
+
+<body>
+{% block contenue %}
+
+	<header id="head" class="secondary"></header>
+
+	<!-- container -->
+	<div class="container">
+
+		<ol class="breadcrumb">
+			<li><a href="/">accueil</a></li>
+			<li class="active">inscritpion</li>
+		</ol>
+
+		<div class="row">
+			
+			<!-- Article main content -->
+			<article class="col-xs-12 maincontent">
+				<header class="page-header">
+					<h1 class="page-title">inscription</h1>
+				</header>
+				
+				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h3 class="thin text-center">Enregistrez vous</h3>
+							<p class="text-center text-muted">Si vous êtes déja enregistrez connectez vous, <a href="/formulaire_authentification">ici</a>. Pour vous inscrire veuillez renseigner tout les champs suivants. </p>
+							<hr>
+
+							<form action="/traitement_creation_compte" method="post">
+								<div class="top-margin">
+									<label>Nom de compte<span class="text-danger">*</span></label>
+									<input type="text" class="form-control" name="nom_de_compte" required>
+								</div>
+								
+								
+								<div class="top-margin">
+									<label>Email <span class="text-danger">*</span></label>
+									<input type="text" class="form-control" name="mail" required>
+								</div>
+									
+									
+									<div class="row top-margin">
+    									<div class="col-sm-6">
+    										<label>mot de passe <span class="text-danger">*</span></label>
+    										<input type="text" class="form-control" name="mot_de_passe_1" required>
+									</div>
+									<div class="col-sm-6">
+										<label>Confirmez mot de passe <span class="text-danger">*</span></label>
+										<input type="text" class="form-control" name="mot_de_passe_2" required > 
+									</div>
+								</div>
+
+								<hr>
+
+								<div class="row">
+									<div class="col-lg-8">
+										<label class="checkbox">
+											<input type="checkbox"> 
+											J'ai lu <a href="page_terms.html">les thermes et conditions</a>
+										</label>                        
+									</div>
+									<div class="col-lg-4 text-right">
+										<button class="btn btn-action" type="submit">confirmez</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+				</div>
+				
+			</article>
+			<!-- /Article -->
+
+		</div>
+	</div>	<!-- /container -->
+	{% endblock contenue %}
+
+</body>
+</html>

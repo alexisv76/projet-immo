@@ -1,0 +1,62 @@
+{% extends "index.html" %}
+
+<body>
+
+    {% block contenue %}
+	<header id="head" class="secondary"></header>
+
+	<!-- container -->
+	<div class="container">
+
+		<ol class="breadcrumb">
+			<li><a href="/">Accueil</a></li>
+			<li class="active">connexion</li>
+		</ol>
+
+		<div class="row">
+			
+			<!-- Article main content -->
+			<article class="col-xs-12 maincontent">
+				<header class="page-header">
+					<h1 class="page-title">connexion</h1>
+				</header>
+				
+				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h3 class="thin text-center">connectez vous</h3>
+							<p class="text-center text-muted">pas de compte ?<a href="/creation_compte">inscrivez vous</a>  </p>
+							<hr>
+							
+							<form action="/traitement_authentification" method="post">
+								<div class="top-margin">
+									<label>nom <span class="text-danger">*</span></label>
+									<input type="text" class="form-control" name="nom" required>
+								</div>
+								<div class="top-margin">
+									<label>mot de passe <span class="text-danger">*</span></label>
+									<input type="password" class="form-control" name="mot_de_passe" required>
+								</div>
+
+								<hr>
+									<div class="col-lg-4 text-right">
+										<button class="btn btn-action" type="submit">connexion</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+				</div>
+				
+			</article>
+			<!-- /Article -->
+
+		</div>
+	</div>	<!-- /container -->
+	{% endblock contenue %}
+    {% block autocomplete %}
+    <div> </div>
+    {% endblock autocomplete %}
+</body>
+</html>

@@ -1,0 +1,96 @@
+{% extends "index.html" %}
+
+<body>
+
+    {% block contenue %}
+    	<header id="head" class="secondary"></header>
+
+	<!-- container -->
+	<div class="container">
+
+		<ol class="breadcrumb">
+			<li><a href="/">Accueil</a></li>
+			<li class="active">annonces</li>
+		</ol>
+
+		<div class="row">
+			
+			<!-- Article main content -->
+			<article class="col-xs-12 maincontent">
+				<header class="page-header">
+					<h1 class="page-title">Annonces {{premiere}} à {{derniere}}</h1>
+				</header>
+				
+          <form autocomplete="off" action="/recherche_perso" method="post">
+        <div style=display:none>
+                 <input  id="types" type="petit" name="types" value={{type_bien1}} >
+         </div>
+          <div style=display:none >       
+            	 <input  id="metre" type="petit" name="prix" value={{prix}} >
+            	 <input  id="metre2" type="petit" name="prix2" value={{prix2}} >    	 
+        </div>
+         <div style=display:none >
+          <input  id="metre" type="petit" name="mettre" value={{metre}} >
+           <input  id="metre2" type="petit" name="mettre2" value={{metre2}}>
+           </div>
+           <div style=display:none >
+           {% if cave %}
+              <div >
+             	<input type="checkbox" id="scales" name="cave" checked>
+               <label for="scales">cave</label>
+             </div>
+             {% endif %}
+             
+              {% if ext %}
+              <div >
+             	<input type="checkbox" id="scales" name="ext" checked>
+               <label for="scales">balcon/terrasse</label>
+             </div>
+             {% endif %}
+             
+               {% if place %}
+              <div >
+             	<input type="checkbox" id="scales" name="place" checked>
+               <label for="scales">garage/parking</label>
+             </div>
+             {% endif %}
+             
+               {% if jardin %}
+              <div >
+             	<input type="checkbox" id="scales" name="jardin" checked>
+               <label for="scales">jardin</label>
+             </div>
+             {% endif %}
+             </div>
+           <div >
+           <input  id="num" type="petit" name="num" value={{num_page}}>
+           </div>
+          </div>
+          <input type="submit" value="page suivante">
+          </form>  
+          
+        <div>
+         <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        {% for a in annonces %}  
+        <div class="panel panel-default">
+		<div class="panel-body">
+        <p><img src={{a.image}} alt="" class="img-rounded pull-right" width="300" > 
+        <li>{{a.types_bien.type_bien}} au prix de {{a.prix}}€ soit
+           {{a.prix_metre_carre}}€ /m2 <br/>
+          {{a.description }} </li>
+          <a href={{a.lien}}>cliquer ici pour en savoir plus</a></p>
+         </div>
+        </div>
+        
+        {% endfor %}
+       
+        </div>
+        </div>
+          
+   {% endblock contenue %}
+    {% block autocomplete %}
+    
+    <div></div>
+        {% endblock autocomplete %}
+    </body>
+    </html>
